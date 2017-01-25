@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Рейтинг (пример 3)</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="css/application.css" rel="stylesheet">
+    <base target="_parent" />
+</head>
+<body>
+<div id="app" class="container-fluid">
+	<div class="bs-callout bs-callout-danger">
+		<h4>Birthday Leads</h4>
+		<p>Current User: <span id="user-name"><i class="fa fa-spinner fa-spin"></i></span></p>
+	</div>
+	<div class="row">
+	<div class="col-md-12">
+			<select id="select">
+				<option value="0">Jan</option>
+				<option value="1">Feb</option>
+				<option value="2">Mar</option>
+				<option value="3">Apr</option>
+				<option value="4">May</option>
+				<option value="5">June</option>
+				<option value="6">July</option>
+				<option value="7">Aug</option>
+				<option value="8">Sep</option>
+				<option value="9">Oct</option>
+				<option value="10">Nov</option>
+				<option value="11">Dec</option>
+			</select>
+			<button id="button" type="button" onclick="app.displayLeads();">Refresh</button>
+	</div>
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Lead Name</th>
+							<th>Birthdate</th>
+						</tr>
+					</thead>
+					<tbody id="deal-list">
+						<tr>
+							<td colspan="3"><i class="fa fa-spinner fa-spin"></i></td>
+						</tr>
+					</tbody>
+				</table>			
+			</div>			
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/application.js"></script>
+<script src="//api.bitrix24.com/api/v1/"></script>
+
+<script>
+	
+    $(document).ready(function () {
+
+		BX24.init(function(){
+
+			app.displayCurrentUser('#user-name');
+			app.chooseCurrentMonth();
+			app.displayLeads();
+
+		});
+    });
+
+</script>
+
+</body>
+</html>
